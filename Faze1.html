@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 900px;
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .interaction {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .like-button, .dislike-button {
+            border: none;
+            background-color: #f2f2f2;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .like-button:hover, .dislike-button:hover {
+            transform: scale(1.1);
+        }
+        .like-button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .dislike-button.active {
+            background-color: #f44336;
+            color: white;
+        }
+        .comment-counter {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LightTube</h1>
+    </header>
+    
+    <main>
+        <section id="video-section">
+            <h2>I Opened a 5 Star Food Truck!</h2>
+            <iframe width="873" height="491" src="https://www.youtube.com/embed/mY3K1Uiji3w" title="I Opened a 5 Star Food Truck!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+            <div class="interaction">
+                <button id="like-button" class="like-button" onclick="updateLikes()">👍 <span id="like-count">0</span></button>
+                <button id="dislike-button" class="dislike-button" onclick="updateDislikes()">👎 <span id="dislike-count">0</span></button>
+                <div class="comment-counter">
+                    Comments: <span id="comment-count">0</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        let likeCount = 0;
+        let dislikeCount = 0;
+        let commentCount = 0;
+
+        function updateLikes() {
+            likeCount++;
+            document.getElementById('like-count').innerText = likeCount;
+            document.getElementById('like-button').classList.add('active');
+            document.getElementById('dislike-button').classList.remove('active');
+        }
+
+        function updateDislikes() {
+            dislikeCount++;
+            document.getElementById('dislike-count').innerText = dislikeCount;
+            document.getElementById('dislike-button').classList.add('active');
+            document.getElementById('like-button').classList.remove('active');
+        }
+
+        // This is a placeholder function to simulate comment count updates
+        function updateComments() {
+            commentCount++;
+            document.getElementById('comment-count').innerText = commentCount;
+        }
+    </script>
+</body>
+</html>
